@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "cypress": "^12.6.0",
+    "save-dev": "^0.0.1-security"
+  },
+
+  "scripts": {
+    "e2e": "cypress open"
+  }
+}
