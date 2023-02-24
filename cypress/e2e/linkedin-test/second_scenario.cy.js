@@ -2,6 +2,9 @@
 describe('Simulation d\'un nouveau post sur linkedin', () => {
 
     it('Connexion sur linkedin', () => {
+        cy.on('uncaught:exception', (err, runnable) => {
+                                    return false;
+                                })
         cy.clearAllCookies();
         cy.clearLocalStorage();
         cy.visit('https://www.linkedin.com/');
@@ -16,6 +19,9 @@ describe('Simulation d\'un nouveau post sur linkedin', () => {
     });
 
     it('Création d\'un nouveau post', () => {
+        cy.on('uncaught:exception', (err, runnable) => {
+                                    return false;
+                                })
         cy.get('#ember26').should('exist');
         cy.get('#ember26').click({ force: true });
 
@@ -28,6 +34,9 @@ describe('Simulation d\'un nouveau post sur linkedin', () => {
     });
 
     it('Suppression du nouveau post', () => {
+        cy.on('uncaught:exception', (err, runnable) => {
+                                    return false;
+                                })
         cy.wait(1000) // wait for 1 second
         cy.get('.artdeco-toast-item__cta').should('exist');
         cy.get('.artdeco-toast-item__cta').click({ force: true });
