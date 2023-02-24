@@ -17,18 +17,24 @@ describe('Simulation d\'un nouveau post sur linkedin', () => {
     });
 
     // Check NavBar
-    it('Recherche NavBar Exist', () => {
+    it('Recherche pour savoir si la navbar est détectée', () => {
+        // Attente de 10 Secondes le temps que l'utilisateur fasse le captcha
         cy.wait(10000)
+        // Vérification si le bouton de recherche existe
         cy.get('.search-global-typeahead__collapsed-search-button-text').should("exist")
     });
 
-    it('Utilisation NavBar Personne', () => {
+    it('Utilisation de la barre de recherche pour trouver une personne', () => {
+        // Vérification si le bouton de recherche existe
         cy.get('.search-global-typeahead__collapsed-search-button-text').should("exist")
+        // Rechercher les élements dans la barre de navigation
         cy.get('.search-global-typeahead__collapsed-search-button-text').type('Adrien BOUTHET')
+        // Recherche de "Voir tous les résultats" et click sur le texte
         cy.contains("Voir tous les résultats").click({ force: true });
     });
 
-    it('Utilisation NavBar Entreprise', () => {
+    it('Utilisation de la barre de recherche pour trouver une entreprise, avec la recherche ', () => {
+
         cy.visit("https://www.linkedin.com/feed/")
         cy.get('.search-global-typeahead__collapsed-search-button-text').should("exist")
         cy.get('.search-global-typeahead__collapsed-search-button-text').type('EPSI')
