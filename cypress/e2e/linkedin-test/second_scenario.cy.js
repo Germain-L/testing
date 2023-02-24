@@ -8,20 +8,32 @@ describe('Simulation d\'un nouveau post sur linkedin', () => {
         cy.clearAllCookies();
         cy.clearLocalStorage();
         cy.visit('https://www.linkedin.com/');
-
-        cy.get('#session_key').should('exist');
-        cy.get('#session_password').should('exist');
-        cy.get('.sign-in-form__submit-button').should('exist');
-
-        cy.get('#session_key').type('gejevod102@wwgoc.com');
-        cy.get('#session_password').type('Password');
-        cy.get('.sign-in-form__submit-button').click({ force: true });
     });
+
+    it('Vérification que les champs existe', () => {
+        cy.on('uncaught:exception', (err, runnable) => {
+                                            return false;
+                                        })
+        cy.get('input[type=text]').should('exist');
+        cy.get('input[type=password]').should('exist');
+    });
+
+    it('Connexion au compte utilisateur', () => {
+        cy.on('uncaught:exception', (err, runnable) => {
+                                            return false;
+                                        })
+        cy.get('input[type=text]').type('gejevod102@wwgoc.com');
+        cy.get('input[type=password]').type('Password');
+        cy.get('button[type=submit]').click({force: true});
+    });
+
+
 
     it('Création d\'un nouveau post', () => {
         cy.on('uncaught:exception', (err, runnable) => {
                                     return false;
                                 })
+        cy.wait(10000);
         cy.get('#ember26').should('exist');
         cy.get('#ember26').click({ force: true });
 

@@ -41,7 +41,8 @@ describe('Simulation d\'un parcour utilisateur sur linkedin', () => {
                                 })
         cy.get('input[type=text]').should('exist');
         cy.get('input[type=password]').should('exist');
-        cy.contains('Sign in').should('exist');
+        /*cy.get('button.sign-in-form__submit-button[data-tracking-control-name="homepage-basic_signin-form_submit-button"]').should('exist');*/
+        cy.get('button[type=submit]').should('exist');
     });
 
     it('Connexion de l\'utilisateur', () => {
@@ -50,7 +51,8 @@ describe('Simulation d\'un parcour utilisateur sur linkedin', () => {
                                 })
         cy.get('input[type=text]').type('gejevod102@wwgoc.com');
         cy.get('input[type=password]').type('Password');
-        cy.contains('Sign in').click({force: true});
+        /*cy.get('button.sign-in-form__submit-button[data-tracking-control-name="homepage-basic_signin-form_submit-button"]').click({force: true})*/
+        cy.get('button[type=submit]').click({force: true});
     });
 
 });
